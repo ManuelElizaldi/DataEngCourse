@@ -12,7 +12,7 @@ target_file = "transformed_data.csv"
 
 # This function will extract a csv 
 def extract_from_csv(file_to_process): 
-    dataframe = pd.read_csv(file_to_process) 
+    dataframe = pd.read_csv(file_to_process, low_memory=False) 
     return dataframe 
 
 # This function will extract a json file 
@@ -30,7 +30,7 @@ def extract_from_xml(file_to_process):
     for person in root:
         name = person.find('name').text
         height = float(person.find('height').text)
-        weight = float(weight.find('weight').text)
+        weight = float(person.find('weight').text)
         
         dataframe = pd.concat([dataframe, pd.DataFrame([{'name':name,'height':height,'weight':weight}])])
     
@@ -38,6 +38,8 @@ def extract_from_xml(file_to_process):
 
 
 # Putting them all together
+# By using the wild card * you extract everything from the local folder
+# This function would need changes if you want it to extract files from another folder
 def extract():
     # This empty dataframe will hold the extracted data
     extracted_data = pd.DataFrame(columns=['name','height','weight'])
@@ -57,21 +59,16 @@ def extract():
 
 
 # Function to transform from pounds -> kilograms and inch -> meters
-def transform(data):
-    '''
-    Convert inches to meters and round off two decimals 1 inch is 0.0254 meters
-    '''
+def transform(data): 
+    '''Convert inches to meters and round off to two decimals 
+    1 inch is 0.0254 meters '''
+    data['height'] = round(data.height * 0.0254,2) 
+ 
+    '''Convert pounds to kilograms and round off to two decimals 
+    1 pound is 0.45359237 kilograms '''
+    data['weight'] = round(data.weight * 0.45359237,2) 
     
-    data['height'] = round(data.height * 0.254, 2)
-    
-    '''
-    Convert pounds to kilograms and round off 2 decimals
-    1 pound is 0.45359237 kilograms
-    '''
-    
-    data['weight'] = round(data.weight *  0.45359237, 2)
-    
-    return data
+    return data 
 
 # This function will load the extracted and cleaned data to a csv file that can be used in a database later 
 def load_data(target_file, transformed_data):
