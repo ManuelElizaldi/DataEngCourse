@@ -36,4 +36,21 @@ def extract_from_xml(file_to_process):
     
     return dataframe
 
+
+# Putting them all together
+def extract():
+    # This empty dataframe will hold the extracted data
+    extracted_data = pd.DataFrame(columns=['name','height','weight'])
     
+    # Process all csv files
+    for csvfile in glob.glob('*csv'):
+        extracted_data = pd.concat([extracted_data, pd.DataFrame(extract_from_csv(csvfile))], ignore_index = True)
+        
+    # Process all json files
+    for jsonfile in glob.glob('*.json'):
+        extracted_data = pd.concat([extracted_data, pd.DataFrame(extract_from_json(jsonfile))], ignore_index = True)
+        
+    for xmlfile in glob.glob('*.xml'):
+        extracted_data = pd.concat([extracted_data, pd.DataFrame(extract_from_xml(xmlfile))], ignore_index= True)
+        
+    return extracted_data
