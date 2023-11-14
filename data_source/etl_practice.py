@@ -33,6 +33,9 @@ def extract_xml(filename):
         fuel = car.find('fuel').text
         df = pd.concat([df, pd.DataFrame([{'car_model':car_model, 'year_of_manufacture':year_of_manufacture, 'price':price, 'fuel':fuel}])])
     
+    # Convert 'price' column to numeric
+    # Got this piece of code from chatgpt and now the script works:
+    df['price'] = pd.to_numeric(df['price'], errors='coerce')
     return df
 
 def extract():
@@ -51,7 +54,7 @@ def extract():
     return extracted_data
 
 def transform(data):
-    data[['price']] = round(data['price'],2) 
+    data['price'] = round(data.price ,2)
     return data
 
 def load_data(target_file, clean_data):
@@ -80,6 +83,9 @@ print("Extract phase Ended")
 # Log the beginning of the Transformation process 
 log_progress("Transform phase Started") 
 print("Transform phase Started")
+
+# Testing
+print(extracted_data['price'].dtype)
 
 transformed_data = transform(extracted_data) 
 print("Transformed Data") 

@@ -13,3 +13,15 @@
 2023-Nov-14-15:07:08,Load phase Started
 2023-Nov-14-15:07:08,Load phase Ended
 2023-Nov-14-15:07:08,ETL Job Ended
+2023-Nov-14-15:19:52,ETL Job Started
+2023-Nov-14-15:19:52,Extract phase Started
+2023-Nov-14-15:19:52,Extract phase Ended
+2023-Nov-14-15:19:52,Transform phase Started
+2023-Nov-14-15:21:24,ETL Job Started
+2023-Nov-14-15:21:24,Extract phase Started
+2023-Nov-14-15:21:24,Extract phase Ended
+2023-Nov-14-15:21:24,Transform phase Started
+2023-Nov-14-15:21:24,Transform phase Ended
+2023-Nov-14-15:21:24,Load phase Started
+2023-Nov-14-15:21:24,Load phase Ended
+2023-Nov-14-15:21:24,ETL Job Ended
