@@ -2,7 +2,7 @@ import glob
 import pandas as pd 
 import xml.etree.ElementTree as ET 
 from datetime import datetime 
-
+import datetime
 # This file will store the log
 log_file = "log_file.txt" 
 
@@ -29,8 +29,8 @@ def extract_from_xml(file_to_process):
     root = tree.getroot()
     for person in root:
         name = person.find('name').text
-        height = float(person.find('height').text)
-        weight = float(person.find('weight').text)
+        height = float(person.find('height').text) # type: ignore
+        weight = float(person.find('weight').text) # type: ignore
         
         dataframe = pd.concat([dataframe, pd.DataFrame([{'name':name,'height':height,'weight':weight}])])
     
@@ -77,7 +77,7 @@ def load_data(target_file, transformed_data):
 # It is good practice to also keep a log of changes that have happend, this function will take care of that
 def log_progress(message):
     timestamp_format = '%Y-%h-%d-%H:%M:%S' # Year-Monthname-Day-Hour-Minute-Second 
-    now = datetime.now()
+    now = datetime.datetime.now()
     timestamp = now.strftime(timestamp_format)
     with open(log_file, 'a') as f:
         f.write(timestamp + ',' + message + '\n')

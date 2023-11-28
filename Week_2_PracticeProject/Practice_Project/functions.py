@@ -62,7 +62,7 @@ def run_query(query_statement, database):
 # This function keeps a log of activities/tasks done
 def log_progress(message):
     timestamp_format = '%Y-%h-%d-%H:%M:%S' # Year-Monthname-Day-Hour-Minute-Second 
-    now = datetime.now() # get current timestamp 
+    now = datetime.datetime.now() # get current timestamp 
     timestamp = now.strftime(timestamp_format) 
     with open("./etl_project_log.txt","a") as f: 
         f.write(timestamp + ' : ' + message + '\n')
