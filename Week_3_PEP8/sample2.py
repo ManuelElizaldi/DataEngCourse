@@ -1,7 +1,8 @@
 
 """
 This is a docstring, it provides documentation regarding the file. It goes at the top of the script.
-You usually write waht the script is about. 
+You usually write waht the script is about. For example this script is intended to teach me how to use
+Pylint. 
 """
 def add(number1, number2):
     return number1 + number2
