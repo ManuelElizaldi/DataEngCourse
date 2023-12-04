@@ -1,0 +1,1 @@
+Graded and practical project where I had the opportunity to practice lessosn from week 1.
