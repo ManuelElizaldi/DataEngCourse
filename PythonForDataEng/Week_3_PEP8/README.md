@@ -5,6 +5,7 @@ Reviewd the best practices for coding with python according to PEP8
 
 # PEP8
 - 4 spaces is better than using tab
+
 - Use spaces to separate functions:
   
      ``` 
@@ -26,6 +27,7 @@ Reviewd the best practices for coding with python according to PEP8
     a=b+c
     ```
 - Create functions for blocks of code -> if you notice yourself using a piece of code often, build a function for that. Create your own tool box.
+
 - Name functions with lowercase and underscore:
     ```
     # Correct
@@ -37,4 +39,24 @@ Reviewd the best practices for coding with python according to PEP8
     ```
   Note: Some built in Python functions use upercase, so it might be confusing for the computer or yourself.
 
-- 
+- Package naming convention:
+```
+# Correct:
+mypackage
+
+or
+
+MyPackage 
+
+# Incorrect:
+my_package
+
+```
+- Further indentation required as indentation is not distinguishable.
+
+```
+def long_function_name(
+    var_one, var_two, var_three,
+    var_four):
+    print(var_one)
+```
