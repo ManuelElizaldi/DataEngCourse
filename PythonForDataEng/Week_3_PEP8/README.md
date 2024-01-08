@@ -1,6 +1,10 @@
-# Reviewd the best practices for coding with python according to PEP8
-- Unit testing -> for testing functions
-- Static code analysis -> analysing code without running it
+# Unit Testing
+Unit testing is used to validate if units of code are operating as designed. 
+Unit testing is performed first in your local machine, then in a server, then you test in production. 
+
+# Static code analysis
+Analysing code without running it
+
 # Modules, Packages and Libraries 
 - Module: Python file with functions
 
