@@ -40,6 +40,7 @@ Reviewd the best practices for coding with python according to PEP8
   Note: Some built in Python functions use upercase, so it might be confusing for the computer or yourself.
 
 - Package naming convention:
+  
 ```
 # Correct:
 mypackage
@@ -60,3 +61,14 @@ def long_function_name(
     var_four):
     print(var_one)
 ```
+
+- Name classes with camel case:
+
+```
+# Correct:
+LamSquirrelCage:
+
+# Incorrect:
+Lam_Squirrel_Cage
+```
+
