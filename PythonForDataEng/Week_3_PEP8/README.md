@@ -1,7 +1,15 @@
-Reviewd the best practices for coding with python according to PEP8
+# Reviewd the best practices for coding with python according to PEP8
 - Unit testing -> for testing functions
 - Static code analysis -> analysing code without running it
-- Modules, packages and libraries
+# Modules, Packages and Libraries 
+- Module: Python file with functions
+
+-  Package: A collection of modules with a __init__.py file.
+    - Python modules into a dictionary
+
+- Library: Collection of packages or a single package
+    - Numpy, Pandas, Pytorch
+
 
 # PEP8
 - 4 spaces is better than using tab
@@ -44,10 +52,6 @@ Reviewd the best practices for coding with python according to PEP8
 ```
 # Correct:
 mypackage
-
-or
-
-MyPackage 
 
 # Incorrect:
 my_package
