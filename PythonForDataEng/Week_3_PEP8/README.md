@@ -4,8 +4,8 @@ Reviewd the best practices for coding with python according to PEP8
     - Modules, packages and libraries
 
 # PEP8
-    - 4 spaces is better than using tab
-    - Use spaces to separate functions:
+- 4 spaces is better than using tab
+- Use spaces to separate functions:
      ``` 
      def function_1 (a, b):
          c = a + b
