@@ -1,0 +1,1 @@
+Learning the basics of data extraction, transformation and loading to a database or creating a csv file. 

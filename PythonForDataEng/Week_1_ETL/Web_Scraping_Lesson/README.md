@@ -1,0 +1,1 @@
+Created a python script able to extract and clean information from the web. 
