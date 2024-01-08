@@ -15,7 +15,7 @@ def log_progress(message):
         
         
 # This function will use requests to get html, then using beautiful soup we parse the html, from that we extract the data that we want:
-def extract(url):
+def extract(url, table_attribs):
     r = requests.get(url).text
     soup = BeautifulSoup(r, 'html.parser')
     table = soup.find_all('tbody')
@@ -23,7 +23,7 @@ def extract(url):
     rows = table.find_all('tr')
     count = 0
     
-    df = pd.DataFrame(columns = ['Name','MC_USD_Billion'])
+    df = pd.DataFrame(columns = table_attribs)
     data_dict = dict()
 
     for row in rows:
@@ -39,3 +39,32 @@ def extract(url):
     df['MC_USD_Billion'] = df['MC_USD_Billion'].astype(float)
     
     return df
+
+# This function has 2 arguments, one is the dataframe and the other one is the exchange rate table, we use the exchange rate table to create the new column in the dataframe
+def transform(df, exchange_rate_df):
+    # USD -> GBP conversion 
+    df['MC_GBP_Billion'] = round(exchange_rate_df['Rate'][1] * df['MC_USD_Billion'],2)
+
+    # USD -> EUR conversion
+    df['MC_EUR_Billion'] = round(exchange_rate_df['Rate'][0] * df['MC_USD_Billion'],2)
+
+    # USD -> INR conversion
+    df['MC_INR_Billion'] = round(exchange_rate_df['Rate'][2] * df['MC_USD_Billion'],2)
+    
+    return df
+
+# Saving dataframe as csv
+def load_to_csv(df, output_path):
+    df.to_csv(output_path)
+    
+def load_to_db(df, sql_connection, table_name):
+    df.to_sql(table_name, sql_connection, if_exists='replace')
+    
+# Function to query the table
+def run_query(query_statement, database):
+    conn = sqlite3.connect(database)
+    cursor = conn.cursor()
+    cursor.execute(query_statement)
+    rows = cursor.fetchall()
+    conn.close()
+    return rows

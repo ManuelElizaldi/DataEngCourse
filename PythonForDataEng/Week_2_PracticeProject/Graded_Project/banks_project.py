@@ -122,8 +122,14 @@ print('Printing the contents of the entire table:')
 print(run_query(query_statement, sql_connection))
 
 # Average market capitalization of all the banks in Billion USD.
+query_statement = 'SELECT AVG(MC_GBP_Billion) FROM Largest_banks'
+print('Average market capitalization of all the banks in Billion USD')
+print(run_query(query_statement, sql_connection))
 
-
+# Print only the names of the top 5 banks
+query_statement = 'SELECT Name from Largest_banks LIMIT 5'
+print('Top 5 banks')
+print(run_query(query_statement, sql_connection))
 
 # Extract the information for the London office, that is Name and MC_GBP_Billion
 query_statement = 'SELECT Name, MC_GBP_Billion FROM Largest_banks'
