@@ -1,6 +1,7 @@
 # Unit Testing
 Unit testing is used to validate if units of code are operating as designed. 
 Unit testing is performed first in your local machine, then in a server, then you test in production. 
+We use the package: unittest
 
 # Static code analysis
 Analysing code without running it
