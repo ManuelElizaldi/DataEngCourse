@@ -34,9 +34,6 @@ CREATE TABLE IF NOT EXISTS public.sales_transaction
     sales_outlet_id integer NOT NULL,
     staff_id integer NOT NULL,
     customer_id integer,
-    product_id integer NOT NULL,
-    quantity integer NOT NULL,
-    price character(4),
     PRIMARY KEY (transaction_id)
 );
 
@@ -56,10 +53,49 @@ CREATE TABLE IF NOT EXISTS public.product
 (
     product_id integer NOT NULL,
     product_category character(25) NOT NULL,
-    product_type character varying(30),
     product_name character varying(25),
-    description character varying(150),
     price character varying(4) NOT NULL,
     PRIMARY KEY (product_id)
 );
+
+CREATE TABLE IF NOT EXISTS public.sales_detail
+(
+    transaction_id integer NOT NULL,
+    product_id integer NOT NULL,
+    quantity integer NOT NULL,
+    price character varying(4) NOT NULL,
+    PRIMARY KEY (transaction_id)
+);
+
+CREATE TABLE IF NOT EXISTS public.product_type
+(
+    product_id integer NOT NULL,
+    product_type character varying,
+    product_description character varying(150),
+    PRIMARY KEY (product_id)
+);
+
+ALTER TABLE IF EXISTS public.product
+    ADD FOREIGN KEY (product_id)
+    REFERENCES public.product_type (product_id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+
+
+ALTER TABLE IF EXISTS public.sales_detail
+    ADD FOREIGN KEY (transaction_id)
+    REFERENCES public.sales_transaction (transaction_id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+
+
+ALTER TABLE IF EXISTS public.sales_detail
+    ADD FOREIGN KEY (product_id)
+    REFERENCES public.product (product_id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+
 END;
