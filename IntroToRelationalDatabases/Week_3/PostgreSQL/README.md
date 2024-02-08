@@ -1,3 +1,5 @@
+## PgAdmin Note:
+Remember to add the bin to your path inside pgadmi, you can do this in the file > preferences > path and then just add the path to the bin. 
 ## PSQL Notes
 Psql basically is a terminal tool to interact with postgres. Remember, pgadmin is a graphical interface to interact with postgres. You can use both to interact with your databases. 
 
